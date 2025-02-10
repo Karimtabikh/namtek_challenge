@@ -18,8 +18,16 @@ DROP TABLE IF EXISTS timesheets;
 -- Create employees table
 CREATE TABLE employees (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    full_name TEXT NULL
-    -- Rest of the fields
+    full_name TEXT NULL,
+    email TEXT NOT NULL UNIQUE,
+    phone_number TEXT,
+    date_of_birth DATE,
+    job_title TEXT,
+    department TEXT,
+    salary INTEGER,
+    start_date DATE,
+    end_date DATE,
+    photo_path TEXT
 );
 
 -- Create timesheets table
@@ -29,5 +37,6 @@ CREATE TABLE timesheets (
     start_time DATETIME NOT NULL,
     end_time DATETIME NOT NULL,
     employee_id INTEGER NOT NULL,
+    work_summary TEXT,
     FOREIGN KEY (employee_id) REFERENCES employees(id)
 );
